@@ -4,11 +4,20 @@ venom
   .create({
     headless: true,
     useChrome: true,
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox']
+    browserArgs: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process', // Eğer sorun çıkarsa kaldırabilirsin
+      '--disable-gpu'
+    ],
   })
   .then((client) => start(client))
   .catch((err) => {
-    console.log(err);
+    console.log('Error launching venom:', err);
   });
 
 function start(client) {
@@ -50,6 +59,7 @@ function start(client) {
       return;
     }
 
+    // Yukarıdaki durumlar dışında genel karşılama mesajı
     await client.sendText(message.from, "Merhaba! Size nasıl yardımcı olabilirim?");
   });
 }
