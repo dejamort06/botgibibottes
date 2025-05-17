@@ -5,7 +5,7 @@ venom
     session: 'bot-session',
     headless: true,
     useChrome: false, // Railway'de Chromium kullan
-    executablePath: '/usr/bin/chromium', // Railway için doğru yol
+    browserExecutablePath: '/usr/bin/chromium', // Doğru parametre adı
     browserArgs: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
