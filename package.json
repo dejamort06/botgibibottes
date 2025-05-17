@@ -2,10 +2,11 @@
   "name": "whatsapp-bot",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "venom-bot": "^4.0.6"
+    "venom-bot": "^5.0.5"
   }
 }
