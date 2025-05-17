@@ -20,7 +20,7 @@ function start(bot) {
       "orospu cocukları", "şerefsizler"
     ];
 
-    if (text.match(/tr\\d{20,}/i)) {
+    if (text.match(/tr\d{20,}/i)) {
       await bot.sendText(message.from, "⚠️ WhatsApp üzerinden IBAN bilgisi alınmamaktadır.");
       return;
     }
