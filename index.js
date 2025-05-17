@@ -1,32 +1,14 @@
 const venom = require('venom-bot');
-const path = require('path');
 
 venom
   .create({
-    session: path.resolve(__dirname, 'whatsapp-session'),
     headless: true,
-    puppeteerOptions: {
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-accelerated-2d-canvas',
-        '--no-first-run',
-        '--no-zygote',
-        '--single-process',
-        '--disable-gpu',
-      ],
-    },
-    multidevice: true,
+    useChrome: true,
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox']
   })
-  .then(client => {
-    client.onStateChange(state => {
-      console.log('Venom state:', state);
-    });
-    start(client);
-  })
-  .catch(err => {
-    console.error('VENOM ERROR:', err);
+  .then((client) => start(client))
+  .catch((err) => {
+    console.log(err);
   });
 
 function start(client) {
