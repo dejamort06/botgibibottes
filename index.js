@@ -3,12 +3,30 @@ const path = require('path');
 
 venom
   .create({
-    session: path.resolve(__dirname, 'whatsapp-session'), // session klasör yolu mutlak verildi
-    multidevice: true, // opsiyonel, multidevice kullanmak istersen
+    session: path.resolve(__dirname, 'whatsapp-session'),
+    headless: true,
+    puppeteerOptions: {
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--no-first-run',
+        '--no-zygote',
+        '--single-process',
+        '--disable-gpu',
+      ],
+    },
+    multidevice: true,
   })
-  .then((client) => start(client))
-  .catch((err) => {
-    console.error('Bot başlatılırken hata oluştu:', err);
+  .then(client => {
+    client.onStateChange(state => {
+      console.log('Venom state:', state);
+    });
+    start(client);
+  })
+  .catch(err => {
+    console.error('VENOM ERROR:', err);
   });
 
 function start(client) {
