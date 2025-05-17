@@ -1,13 +1,12 @@
 {
   "name": "whatsapp-bot",
   "version": "1.0.0",
+  "description": "WhatsApp Destek Botu",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "venom-bot": "^5.0.5",
-    "puppeteer": "^22.8.2"
+    "venom-bot": "^5.1.1"
   }
 }
