@@ -1,10 +1,14 @@
 const venom = require('venom-bot');
+const path = require('path');
 
 venom
-  .create()
+  .create({
+    session: path.resolve(__dirname, 'whatsapp-session'), // session klasör yolu mutlak verildi
+    multidevice: true, // opsiyonel, multidevice kullanmak istersen
+  })
   .then((client) => start(client))
   .catch((err) => {
-    console.log(err);
+    console.error('Bot başlatılırken hata oluştu:', err);
   });
 
 function start(client) {
