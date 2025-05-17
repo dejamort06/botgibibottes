@@ -11,13 +11,12 @@ venom
       '--disable-accelerated-2d-canvas',
       '--no-first-run',
       '--no-zygote',
-      '--single-process', // Eğer sorun çıkarsa kaldırabilirsin
       '--disable-gpu'
-    ],
+    ]
   })
   .then((client) => start(client))
   .catch((err) => {
-    console.log('Error launching venom:', err);
+    console.log('HATA:', err);
   });
 
 function start(client) {
@@ -59,7 +58,6 @@ function start(client) {
       return;
     }
 
-    // Yukarıdaki durumlar dışında genel karşılama mesajı
     await client.sendText(message.from, "Merhaba! Size nasıl yardımcı olabilirim?");
   });
 }
