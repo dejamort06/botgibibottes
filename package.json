@@ -6,6 +6,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "venom-bot": "^5.1.1"
+    "venom-bot": "^4.0.6"
   }
 }
