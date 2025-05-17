@@ -2,8 +2,10 @@ const venom = require('venom-bot');
 
 venom
   .create({
+    session: 'bot-session',
     headless: true,
-    useChrome: true,
+    useChrome: false, // Railway'de Chromium kullan
+    executablePath: '/usr/bin/chromium', // Railway için doğru yol
     browserArgs: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -16,7 +18,7 @@ venom
   })
   .then((client) => start(client))
   .catch((err) => {
-    console.log('HATA:', err);
+    console.error('HATA:', err);
   });
 
 function start(client) {
